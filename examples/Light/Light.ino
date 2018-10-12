@@ -29,7 +29,7 @@ void setup()
 
 void loop() 
 {
-  photocellReading = analogRead(1); // A1 analogue pin
+  photocellReading = analogRead(1); // A1 analog pin
     
   double volts = (photocellReading * 5.0) / 1024;  // Convert to volts
     
