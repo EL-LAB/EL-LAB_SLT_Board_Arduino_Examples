@@ -53,16 +53,16 @@ void loop()
  {
    soundReading = analogRead(0); // A0 analog pin
      
-    if (soundReading < 1024)  //This is the max of the 10-bit ADC so this loop will include all readings
-    {
-       if (soundReading > signalMax)
-       {
-         signalMax = soundReading;  // Save only the max levels
-       }
-    else if (soundReading < signalMin)
-       {
-         signalMin = soundReading;   // Save only the min levels
-       }
+   if (soundReading < 1024)  //This is the max of the 10-bit ADC so this loop will include all readings
+   {
+     if (soundReading > signalMax)
+     {
+       signalMax = soundReading;  // Save only the max levels
+     }
+     else if (soundReading < signalMin)
+     {
+       signalMin = soundReading;   // Save only the min levels
+     }
    }
  }
     
