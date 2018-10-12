@@ -65,5 +65,5 @@ void loop()
     Serial.println(volts);
   }
     
-  delay(500);
+  delay(1000);
 }
