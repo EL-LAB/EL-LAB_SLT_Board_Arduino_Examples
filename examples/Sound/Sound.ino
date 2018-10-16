@@ -1,12 +1,13 @@
 /*
     Sound.ino
-
+    
     This example shows how to use the sound sensor on the 
     platform EL LAB: SLT Board.
-
+    
     The sound sensor used is a standard PCB mount microphone.
     
     To adjust when the LED turns on based on audio input:
+    
       Perform several experiments by clapping, snapping, blowing, 
       door slamming, knocking etc and see where the resting noise 
       level is and where the loud noises are. Adjust the if statement 
@@ -16,12 +17,12 @@
       
     This code has been adapted from the Electret Mic Breakout Board Hookup Guide
     example from SparkFun.
-
+    
     Created: October 12th, 2018
     Author: El Lab de Electro: EL LAB
     Modified: -
     Author: -
-
+    
     URL: https://github.com/EL-LAB/EL-LAB_SLT_Board_Arduino_Examples
 */
 
@@ -42,33 +43,33 @@ void setup()
 
 void loop() 
 {
- unsigned long start = millis();  // Start of sample window
- unsigned int peakToPeak = 0;     // Peak-to-peak level
+  unsigned long start = millis();  // Start of sample window
+  unsigned int peakToPeak = 0;     // Peak-to-peak level
 
- unsigned int signalMax = 0;
- unsigned int signalMin = 1024;
+  unsigned int signalMax = 0;
+  unsigned int signalMin = 1024;
 
- // Collect data for 250 miliseconds
- while (millis() - start < sampleWindow)
- {
-   soundReading = analogRead(0); // A0 analog pin
+  // Collect data for 250 miliseconds
+  while (millis() - start < sampleWindow)
+  {
+    soundReading = analogRead(0); // A0 analog pin
      
-   if (soundReading < 1024)  //This is the max of the 10-bit ADC so this loop will include all readings
-   {
-     if (soundReading > signalMax)
-     {
-       signalMax = soundReading;  // Save only the max levels
-     }
-     else if (soundReading < signalMin)
-     {
-       signalMin = soundReading;   // Save only the min levels
-     }
-   }
- }
+    if (soundReading < 1024)  //This is the max of the 10-bit ADC so this loop will include all readings
+    {
+      if (soundReading > signalMax)
+      {
+        signalMax = soundReading;  // Save only the max levels
+      }
+      else if (soundReading < signalMin)
+      {
+        signalMin = soundReading;   // Save only the min levels
+      }
+    }
+  }
     
- peakToPeak = signalMax - signalMin;  // max - min = peak-peak amplitude
+  peakToPeak = signalMax - signalMin;  // max - min = peak-peak amplitude
  
- double volts = (peakToPeak * 3.3) / 1024;  // Convert to volts
+  double volts = (peakToPeak * 3.3) / 1024;  // Convert to volts
  
   if (volts >= 1.0)
   {
