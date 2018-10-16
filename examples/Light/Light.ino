@@ -34,34 +34,34 @@ void loop()
   double volts = (photocellReading * 5.0) / 1024;  // Convert to volts
     
 // Light level detected
-  if (photocellReading < 10) 
+  if (photocellReading < 100) 
   {
     // Prints output message
-     Serial.println("Very bright\t");
+     Serial.print("Very bright\t");
      Serial.println(volts);
   }
   else if (photocellReading < 200) 
   {
     // Prints output message
-    Serial.println("Bright\t");
+    Serial.print("Bright\t\t");
     Serial.println(volts);
   }
   else if (photocellReading < 500) 
   {
     // Prints output message
-    Serial.println("Light\t");
+    Serial.print("Light\t\t");
     Serial.println(volts);
   } 
   else if (photocellReading < 800) 
   {
     // Prints output message
-    Serial.println("Very Dim\t");
+    Serial.print("Very Dim\t");
     Serial.println(volts);
   } 
   else 
   {
     // Prints output message
-    Serial.println("Dark\t");
+    Serial.print("Dark\t\t");
     Serial.println(volts);
   }
     
